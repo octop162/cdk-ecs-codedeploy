@@ -1,21 +1,24 @@
 {
-    "executionRoleArn": null,
-    "containerDefinitions": [
-      {
-        "name": "app",
-        "image": "<IMAGE1_NAME>",
-        "essential": true,
-        "portMappings": [
-          {
-            "hostPort": 80,
-            "protocol": "tcp",
-            "containerPort": 80
-          }
-        ]
-      }
-    ],
-    "memory": "512",
-    "cpu": "256",
-    "networkMode": "awsvpc",
-    "family": ""
-  }
+  "containerDefinitions": [
+    {
+      "name": "app",
+      "image": "<IMAGE1_NAME>",
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "protocol": "tcp",
+          "containerPort": 80
+        }
+      ],
+      "essential": true
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "memory": "512",
+  "cpu": "256",
+  "family": "<ファミリー名>",
+  "executionRoleArn": "<タスク実行ロール>"
+}

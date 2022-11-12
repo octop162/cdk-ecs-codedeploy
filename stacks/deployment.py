@@ -104,7 +104,7 @@ class DeploymentStack(Stack):
             task_definition_template_file=s3_output.at_path('taskdef.json'),
             container_image_inputs=[codepipeline_actions.CodeDeployEcsContainerImageInput(
                 input=ecr_output,
-                task_definition_placeholder="imageDetail.json"
+                task_definition_placeholder="IMAGE1_NAME"
             )],
         )
         pipeline.add_stage(

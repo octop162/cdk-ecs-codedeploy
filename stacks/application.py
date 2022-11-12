@@ -68,11 +68,17 @@ class ApplicationStack(Stack):
         self.test_listener = alb.add_listener(
             "TestListener",
             port=8080,
+            protocol=elbv2.ApplicationProtocol.HTTP,
             open=True,
+            default_action=elbv2.ListenerAction.forward(
+                target_groups=[self.target],
+            )
         )
 
-        self.test_target = self.test_listener.add_targets(
-            "TestApplicationFleets",
+        self.test_target = elbv2.ApplicationTargetGroup(
+            self, 'TestApplicationFleets',
             port=80,
-            targets=[self.service]
+            protocol=elbv2.ApplicationProtocol.HTTP,
+            target_type=elbv2.TargetType.IP,
+            vpc=vpc,
         )
