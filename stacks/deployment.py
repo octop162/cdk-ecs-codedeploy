@@ -86,21 +86,11 @@ class DeploymentStack(Stack):
             actions=[ecr_action, s3_action],
         )
 
-        # deploy role
-        # deploy_role = iam.Role(self, "DeployRole",
-        #     assumed_by=iam.ServicePrincipal("codedeploy.amazonaws.com"),
-        #     managed_policies=iam.ManagedPolicy.from_aws_managed_policy_name(
-        #         "service-role/AWSLambdaBasicExecutionRole"
-        #     )
-        # )
-
         # deploy
         code_deploy_ecs_deploy_action = codepipeline_actions.CodeDeployEcsDeployAction(
             action_name="actionName",
             deployment_group=ecs_deployment_group,
-            # app_spec_template_input=s3_output,
             app_spec_template_file=s3_output.at_path('appspec.yml'),
-            # task_definition_template_input=s3_output,
             task_definition_template_file=s3_output.at_path('taskdef.json'),
             container_image_inputs=[codepipeline_actions.CodeDeployEcsContainerImageInput(
                 input=ecr_output,

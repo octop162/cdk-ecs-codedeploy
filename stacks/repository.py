@@ -8,4 +8,4 @@ class RepositoryStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        ecr_repo = ecr.Repository(self, "AppRepository", repository_name='app-repository')
+        ecr.Repository(self, "AppRepository", repository_name='app-repository')
