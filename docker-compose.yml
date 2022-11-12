@@ -1,0 +1,9 @@
+version: '3'
+services:
+  cdk:
+    build: ./
+    volumes:
+      - ~/.aws/:/root/.aws:ro
+      - ./:/workspace:cached
+    command: /bin/ash
+  

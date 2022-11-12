@@ -1,0 +1,21 @@
+{
+    "executionRoleArn": null,
+    "containerDefinitions": [
+      {
+        "name": "app",
+        "image": "<IMAGE1_NAME>",
+        "essential": true,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "protocol": "tcp",
+            "containerPort": 80
+          }
+        ]
+      }
+    ],
+    "memory": "512",
+    "cpu": "256",
+    "networkMode": "awsvpc",
+    "family": ""
+  }
